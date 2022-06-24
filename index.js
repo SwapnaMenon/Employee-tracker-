@@ -23,8 +23,9 @@ function menu(){
     if (data.choice==="view all employees"){
         viewemployees ()
     }
-    if (data.choice==="add a department"){
-        viewemployees ()
+    
+    if (data.choice==="update an employee role"){
+        updateRole ()
     }
     })
 }
@@ -53,14 +54,14 @@ function viewemployees (){
     })
 }
 function adddepartments (){
-    return inquirer.prompt([
+    return inquire.prompt([
         {
             type:"input",
             name:"name",
-            message:"a message",
+            message:"what is the department you want to add?",
         }
     ])
-    .then (function(userinputs){
+    .then (function(userinput){
         const sql ="insert into departments (name) values(?)";
         Connection.query(sql,[userinput.name],function(error, result){
             console.table (result);
@@ -68,5 +69,25 @@ function adddepartments (){
         }) 
     })
 }
-     
+function updateRole (){
+    return inquire.prompt([
+        {
+            type:"input",
+            name:"empId",
+            message:"which employee id's role id is being updated?",
+        },
+        {
+            type:"input",
+            name:"roleId",
+            message:"what is the new role id?",
+        }
+    ])
+    .then (function(userinput){
+        const sql ="update employees set role_id=? where id=? ";
+        Connection.query(sql,[userinput.roleId,userinput.empId],function(error, result){
+            console.table (result);
+            menu() 
+        }) 
+    })
+}        
 menu()
