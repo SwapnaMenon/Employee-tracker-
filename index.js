@@ -8,7 +8,7 @@ function menu(){
             type:"list",
             name:"choice",
             message:"What would you like to do",
-            choices:["view all departments","view all roles","view all employees", "add a department","add a role", "add an employee,", "update an employee role","exit"]
+            choices:["view all departments","view all roles","view all employees", "add a department","add a role", "add an employee", "update an employee role","exit"]
 
         
         }
@@ -26,6 +26,12 @@ function menu(){
     
     if (data.choice==="update an employee role"){
         updateRole ()
+    }
+    if (data.choice==="add a department"){
+        adddepartments()
+    }
+    if (data.choice==="add an employee"){
+        addanemployee()
     }
     })
 }
@@ -67,6 +73,40 @@ function adddepartments (){
             console.table (result);
             menu() 
         }) 
+    })
+}
+function addanemployee() {
+    return inquire.prompt([
+        {
+            type:"input",
+            name:"firstname", 
+            message:" enter your first name", 
+        },
+        {
+            type:"input", 
+            name:"lastname", 
+            message:" enter your last name", 
+        },
+        {
+            type:"list", 
+            name:"roleid", 
+            message:"what is the employee role id",
+            choices:["1","2","3","4"], 
+        }, 
+        {
+            type:"list", 
+            name:"managerid", 
+            message:"what is the manager id",
+            choices:["1","2"],   
+        }, 
+    ])
+    .then (function(userinput){
+        //console.log (userinput)//
+        const sql=`insert into employees (firstname, lastname, role_id, manager_id) values(?,?,?,?)`
+        Connection.query (sql, [userinput.firstname, userinput.lastname, userinput.roleid, userinput.managerid], (error,results) =>{
+            console.log ("employee has been added")
+        })
+        menu()
     })
 }
 function updateRole (){
