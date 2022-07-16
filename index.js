@@ -33,6 +33,9 @@ function menu(){
     if (data.choice==="add an employee"){
         addanemployee()
     }
+    if (data.choice==="add a role"){
+        addrole()
+    }
     })
 }
 function viewrole (){
@@ -108,6 +111,33 @@ function addanemployee() {
         })
         menu()
     })
+}
+    function addrole() {
+        return inquire.prompt([
+            {
+                type: "input", 
+                name:"title", 
+                message:"whats the title of the new role?",
+            }, 
+            {
+                type:"input", 
+                name:"salary", 
+                message:"what is the salary for this role", 
+            }, 
+            {
+                type:"input", 
+                name:"deprtmentid", 
+                message:"what is the department id for this new role",    
+            }
+        ])
+        .then(function(userinput){
+            const sql= `insert into role (title, salary, department_id) values(?,?,?)`
+            Connection.query (sql, [userinput.title, userinput.salary, userinput. departmentid], function(error, result){
+                console.log ("role has been added")
+            })
+            menu()
+        })
+
 }
 function updateRole (){
     return inquire.prompt([
