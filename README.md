@@ -25,6 +25,8 @@ AS A business owner I want to be able to view and manage the departments, roles,
 
 # Mock-Up 
 https://drive.google.com/file/d/1Svo_SOdDeZB_PTgmOqIZEZ8PtUyqSPJU/view
+! [demo] (./Public/Assets/Employee-Tracker.mp4)
+
 # Links 
 GitHub Repo: 
 
