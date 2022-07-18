@@ -24,8 +24,7 @@ AS A business owner I want to be able to view and manage the departments, roles,
 - WHEN I choose to update an employee role
 
 # Mock-Up 
-https://drive.google.com/file/d/1EvyfcuUUQYFwTeBbEVtpgHvoj_4WmuH1/view
-
+https://drive.google.com/file/d/1Svo_SOdDeZB_PTgmOqIZEZ8PtUyqSPJU/view
 # Links 
 GitHub Repo: 
 
